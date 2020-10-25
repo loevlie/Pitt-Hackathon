@@ -118,11 +118,13 @@ def get_pred(model,df):
     model.eval()
     stay = []
     def PreProcess(df):
-        #print(df)
-        #df['City_Code_Patient'].fillna(-99,inplace=True)
-        #df['Bed Grade'].fillna(5,inplace=True)
+        df['City_Code_Patient'] = df['City_Code_Patient'].astype(str).astype(float)
+        df['Bed Grade'] = df['Bed Grade'].astype(str).astype(float)
+        df['City_Code_Patient'].fillna(-99,inplace=True)
+        df['Bed Grade'].fillna(5,inplace=True)
         wards = pd.get_dummies(df['Ward_Type'],drop_first=True)
         Age = pd.get_dummies(df['Age'],drop_first=True)
+        df['Hospital_code'] = df['Hospital_code'].astype(str).astype(float)
         hospital_code =  pd.get_dummies(df['Hospital_code'],drop_first=True)
         hospital_type_code =  pd.get_dummies(df['Hospital_type_code'],drop_first=True)
         hospital_region_code =  pd.get_dummies(df['Hospital_region_code'],drop_first=True)
@@ -133,10 +135,13 @@ def get_pred(model,df):
         severity = pd.get_dummies(df['Severity of Illness'],drop_first=True)
         df = pd.concat([df,Age,wards,hospital_code,hospital_type_code,hospital_region_code,department,ward_facility_code,bed_grade,admission_type,severity],axis = 1)
         
-        df.drop(['case_id','Age','Ward_Type','Hospital_code','Hospital_type_code','Hospital_region_code','Department','City_Code_Hospital','Ward_Facility_Code','Bed Grade','Type of Admission','Severity of Illness','patientid','Available Extra Rooms in Hospital', 'City_Code_Patient','Visitors with Patient', 'Admission_Deposit'],axis=1,inplace=True)
-        df['City_Code_Patient']=7.0
+        df.drop(['case_id','Age','Ward_Type','Hospital_code','Hospital_type_code','Hospital_region_code','Department','City_Code_Hospital','Ward_Facility_Code','Bed Grade','Type of Admission','Severity of Illness','patientid'],axis=1,inplace=True)
+        
         df['Visitors with Patient']=2
         df['Admission_Deposit']=5000.0
+        df['Available Extra Rooms in Hospital']= df['Available Extra Rooms in Hospital'].astype(str).astype(float)
+        print(df.head())
+        print(df.to_numpy()[-1])
         x = torch.Tensor(df.to_numpy()[-1])
         return x
 
