@@ -8,3 +8,6 @@ To use this GUI (after installing the dependencies) all you need to do is cd int
 `Python3 GUI.py`
 
 ![GUI image](https://github.com/loevlie/Pitt-Hackathon/blob/main/Gui1.png)
+
+# Results
+**1st place** in the “Largest Impact on Healthcare Workers” category
