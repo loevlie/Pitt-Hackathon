@@ -1,6 +1,9 @@
 # Patient Stay Duration Predictor
 Using created two GUI's using two different models to predict the length in days a patient would need to stay in the hospital.  
 
+# Results
+**1st place** in the “Largest Impact on Healthcare Workers” category
+
 ## GUI.py
 
 To use this GUI (after installing the dependencies) all you need to do is cd into the folder that you have cloned the repository into.  Then just use the code 
@@ -9,5 +12,3 @@ To use this GUI (after installing the dependencies) all you need to do is cd int
 
 ![GUI image](https://github.com/loevlie/Pitt-Hackathon/blob/main/Gui1.png)
 
-# Results
-**1st place** in the “Largest Impact on Healthcare Workers” category
